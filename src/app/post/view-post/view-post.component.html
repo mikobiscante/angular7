@@ -1,0 +1,16 @@
+<main *ngIf="post">
+  <div class="clearfix mb-5">
+    <a class="btn btn-primary btn-sm" [routerLink]="['/blogs']"><i class="fas fa-angle-left"></i> Back to blogs</a>
+    <a class="btn btn-danger btn-sm float-right" (click)="delete()"><i class="fas fa-trash-alt"></i> Delete</a>
+    <a class="btn btn-primary btn-sm float-right mr-3" [routerLink]="['/blogs/edit', post?.id]"><i class="fas fa-pen"></i> Edit</a>
+  </div>
+  <h2>{{post?.title}}</h2>
+  <small class="text-muted">Posted on {{post?.createdDate | date: 'EEEE | MMM d, y h:mm a'}}</small><br>
+  <small *ngIf="post?.updatedDate" class="text-muted">Updated on {{post?.updatedDate | date: 'EEEE | MMM d, y h:mm a'}}</small>
+  <div class="my-3 bg-light text-center" *ngIf="post?.image">
+    <img src="{{post?.image}}" class="img-fluid" alt="{{post?.title}}">
+  </div>
+  <div class="clearfix mt-3">
+    <p>{{post?.body}}</p>
+  </div>
+</main>

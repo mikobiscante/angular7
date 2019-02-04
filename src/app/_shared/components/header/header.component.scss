@@ -1,0 +1,14 @@
+@import "theme";
+@import "config";
+@import "menu";
+
+header {
+  position: fixed;
+  z-index: 2;
+  width: 100%;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
