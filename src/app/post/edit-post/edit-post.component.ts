@@ -39,7 +39,7 @@ export class EditPostComponent implements OnInit {
     this.getPostById(this.postId);
 
     // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/blogs';
   }
 
   // convenience getter for easy access to form fields

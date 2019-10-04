@@ -5,7 +5,7 @@
       Create blog
     </a>
   </div>
-  <div class="row" *ngIf="posts">
+  <div class="row" *ngIf="(posts && posts.length > 0); else noBlogs">
     <div class="col-sm-4" *ngFor="let post of posts">
       <div class="card bg-secondary mb-3">
         <div class="card-body">
@@ -17,4 +17,7 @@
       </div>
     </div>
   </div>
+  <ng-template #noBlogs>
+    <h3 class="text-white-50 text-center">No blogs yet...</h3>
+  </ng-template>
 </main>
