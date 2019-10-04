@@ -3,7 +3,7 @@
 Simple angular app
 
 
-## Installation
+## Install packages
 
 ```$ npm install```
 
