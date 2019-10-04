@@ -55,7 +55,7 @@ export class PostBackendInterceptor implements HttpInterceptor {
         let updatePost = request.body;
 
         // validation
-        let duplicatePost = posts.filter(post => { return post.title === updatePost.title; }).length;
+        let duplicatePost = posts.filter(post => (post.title === updatePost.title && post.id !== updatePost.id)).length;
         if (duplicatePost) {
           return throwError({ error: { message: 'Title "' + updatePost.title + '" is already exist' } });
         }

@@ -9,8 +9,8 @@
     <div class="col-sm-4" *ngFor="let post of posts">
       <div class="card bg-secondary mb-3">
         <div class="card-body">
-          <h5 class="card-title" [routerLink]="['/blogs', post.id]">{{post.title | slice:0:30}}</h5>
-          <p class="card-text">{{post.body | slice:0:100}}</p>
+          <h5 class="card-title text-capitalize" [routerLink]="['/blogs', post.id]">{{post.title | slice:0:30}}</h5>
+          <p class="card-text text-white-50">{{post.body | slice:0:100}}</p>
           <a [routerLink]="['/blogs/edit', post.id]" class="btn btn-primary btn-sm mr-1"><i class="far fa-pen"></i> Edit</a>
           <button (click)="onDelete(post)" type="button" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i> Delete</button>
         </div>

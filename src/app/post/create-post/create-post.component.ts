@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
@@ -8,7 +8,8 @@ import { Post } from '../../_shared/models/post';
 @Component({
   selector: 'app-create-post',
   templateUrl: './create-post.component.html',
-  styleUrls: ['./create-post.component.scss']
+  styleUrls: ['./create-post.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CreatePostComponent implements OnInit {
   postForm: FormGroup;
@@ -55,10 +56,13 @@ export class CreatePostComponent implements OnInit {
     } as Post).pipe(first()).subscribe(
       data => {
         this.router.navigate([this.returnUrl]);
+        console.log('Success');
       },
       error => {
-        this.loading = false;
         console.log(error);
+      },
+      () => {
+        this.loading = false;
       });
   }
 
