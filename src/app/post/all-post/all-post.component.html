@@ -11,8 +11,8 @@
         <div class="card-body">
           <h5 class="card-title text-capitalize" [routerLink]="['/blogs', post.id]">{{post.title | slice:0:30}}</h5>
           <p class="card-text text-white-50">{{post.body | slice:0:100}}</p>
-          <a [routerLink]="['/blogs/edit', post.id]" class="btn btn-primary btn-sm mr-1"><i class="far fa-pen"></i> Edit</a>
-          <button (click)="onDelete(post)" type="button" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i> Delete</button>
+          <a [routerLink]="['/blogs/edit', post.id]" class="btn btn-primary btn-sm mr-1"><i class="fas fa-pen"></i> Edit</a>
+          <button (click)="onDelete(post)" type="button" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i> Delete</button>
         </div>
       </div>
     </div>

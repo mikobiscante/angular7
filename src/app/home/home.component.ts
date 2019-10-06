@@ -1,16 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { PostService } from '../_shared/services/post.service';
+import { Component, AfterViewInit } from '@angular/core';
+declare var particlesJS: any;
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements AfterViewInit {
 
   constructor() { }
 
-  ngOnInit() {
+  ngAfterViewInit() {
+    particlesJS.load('particles', '../assets/particles.json');
   }
 
 }
