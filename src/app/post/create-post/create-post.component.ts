@@ -54,7 +54,7 @@ export class CreatePostComponent implements OnInit {
       image: this.f.image.value,
       createdDate: new Date()
     } as Post).pipe(first()).subscribe(
-      data => {
+      () => {
         this.router.navigate([this.returnUrl]);
         console.log('Success');
       },

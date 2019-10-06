@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../../_shared/services/post.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { Post } from '../../_shared/models/post';
 
@@ -14,7 +14,6 @@ export class ViewPostComponent implements OnInit {
   private postId: number | string;
 
   constructor(private postService: PostService,
-    private router: Router,
     private route: ActivatedRoute
   ) {
 

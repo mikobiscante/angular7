@@ -34,7 +34,7 @@ export class AllPostComponent implements OnInit {
   }
 
   onDelete(post) {
-    this.postService.delete(post).pipe(first()).subscribe(data => {
+    this.postService.delete(post).pipe(first()).subscribe(() => {
       this.getAllPosts();
       console.log('Successfully deleted record.');
     });
