@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class PostService {
   url: string;
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {
     this.url = '/posts';
   }
 

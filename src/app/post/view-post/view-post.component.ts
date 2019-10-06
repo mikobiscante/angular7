@@ -15,9 +15,7 @@ export class ViewPostComponent implements OnInit {
 
   constructor(private postService: PostService,
     private route: ActivatedRoute
-  ) {
-
-  }
+  ) { }
 
   ngOnInit() {
     this.postId = this.route.snapshot.paramMap.get('id');
@@ -28,7 +26,7 @@ export class ViewPostComponent implements OnInit {
   getPostById(id) {
     this.postService.get(id).pipe(first()).subscribe(data => {
       this.post = data;
-    })
+    });
   }
 
 }

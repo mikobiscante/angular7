@@ -10,7 +10,7 @@ export class PostBackendInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // get array posts in local storage
-    let posts: any[] = JSON.parse(localStorage.getItem('posts')) || [];
+    const posts: any[] = JSON.parse(localStorage.getItem('posts')) || [];
 
     // wrap in delayed observable to simulate server api call
     return of(null).pipe(mergeMap(() => {
@@ -23,20 +23,20 @@ export class PostBackendInterceptor implements HttpInterceptor {
       // get post by id
       if (request.url.match(/\/posts\/\d+$/) && request.method === 'GET') {
         // find post by id in posts array
-        let urlParts = request.url.split('/');
-        let id = parseInt(urlParts[urlParts.length - 1]);
-        let matchedPosts = posts.filter(post => { return post.id === id; });
-        let post = matchedPosts.length ? matchedPosts[0] : null;
+        const urlParts = request.url.split('/');
+        const id = parseInt(urlParts[urlParts.length - 1], 10);
+        const matchedPosts = posts.filter(p => p.id === id);
+        const post = matchedPosts.length ? matchedPosts[0] : null;
 
         return of(new HttpResponse({ status: 200, body: post }));
       }
 
       // create post
       if (request.url.endsWith('/posts') && request.method === 'POST') {
-        let newPost = request.body;
+        const newPost = request.body;
 
         // validation
-        let duplicatePost = posts.filter(post => { return post.title === newPost.title; }).length;
+        const duplicatePost = posts.filter(post => post.title === newPost.title).length;
         if (duplicatePost) {
           return throwError({ error: { message: 'Title "' + newPost.title + '" is already exist' } });
         }
@@ -52,19 +52,19 @@ export class PostBackendInterceptor implements HttpInterceptor {
 
       // put post
       if (request.url.match(/\/posts\/\d+$/) && request.method === 'PUT') {
-        let updatePost = request.body;
+        const updatePost = request.body;
 
         // validation
-        let duplicatePost = posts.filter(post => (post.title === updatePost.title && post.id !== updatePost.id)).length;
+        const duplicatePost = posts.filter(post => (post.title === updatePost.title && post.id !== updatePost.id)).length;
         if (duplicatePost) {
           return throwError({ error: { message: 'Title "' + updatePost.title + '" is already exist' } });
         }
 
         // find post by id in posts array
-        let urlParts = request.url.split('/');
-        let id = parseInt(urlParts[urlParts.length - 1]);
+        const urlParts = request.url.split('/');
+        const id = parseInt(urlParts[urlParts.length - 1], 10);
         for (let i = 0; i < posts.length; i++) {
-          let post = posts[i];
+          const post = posts[i];
           if (post.id === id) {
             posts[i] = updatePost;
             localStorage.setItem('posts', JSON.stringify(posts));
@@ -79,10 +79,10 @@ export class PostBackendInterceptor implements HttpInterceptor {
       // delete post
       if (request.url.match(/\/posts\/\d+$/) && request.method === 'DELETE') {
         // find post by id in posts array
-        let urlParts = request.url.split('/');
-        let id = parseInt(urlParts[urlParts.length - 1]);
+        const urlParts = request.url.split('/');
+        const id = parseInt(urlParts[urlParts.length - 1], 10);
         for (let i = 0; i < posts.length; i++) {
-          let post = posts[i];
+          const post = posts[i];
           if (post.id === id) {
             // delete post
             posts.splice(i, 1);

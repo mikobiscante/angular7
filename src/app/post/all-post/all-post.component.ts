@@ -10,7 +10,7 @@ import { first } from 'rxjs/operators';
   styleUrls: ['./all-post.component.scss']
 })
 export class AllPostComponent implements OnInit {
-  posts: Post[]
+  posts: Post[];
 
   constructor(private postService: PostService, private router: Router) { }
 
@@ -24,7 +24,7 @@ export class AllPostComponent implements OnInit {
     });
   }
 
-  viewPost(post){
+  viewPost(post) {
     console.log(post);
     this.router.navigate([`/post/${post.id}`]);
   }

@@ -52,7 +52,7 @@ export class EditPostComponent implements OnInit {
         title: this.post.title,
         body: this.post.body
       });
-    })
+    });
   }
 
   onSubmit() {
@@ -69,7 +69,7 @@ export class EditPostComponent implements OnInit {
     this.post.image = this.f.image.value ? this.f.image.value : this.post.image;
     this.post.updatedDate = new Date();
     this.postService.update(this.post).pipe(first()).subscribe(
-      data => {
+      () => {
         this.router.navigate([this.returnUrl]);
         console.log('Success');
       },
