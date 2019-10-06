@@ -1,0 +1,24 @@
+@import "../../../scss/theme.scss";
+@import "../../../scss/config";
+
+.back-to-top {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  display: none;
+  color: #aaa;
+  text-align: center;
+  height: 50px;
+  width: 50px;
+  background-color: rgba(255, 255, 255, 0.836);
+  cursor: pointer;
+  -webkit-border-radius: 50rem;
+  -moz-border-radius: 50rem;
+  -ms-border-radius: 50rem;
+  -o-border-radius: 50rem;
+  border-radius: 50rem;
+  z-index: 1000;
+  @include easeOut;
+}
